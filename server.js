@@ -5,14 +5,16 @@ const cors = require("cors");
 const app = express();
 
 const corsOptions = {
-  origin: "https://capstone-mern-front.vercel.app/",
+  origin: "https://capstone-mern-front.vercel.app",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 204,
 };
-
-app.options('*', cors())
 
 //PORT
 const PORT = process.env.PORT || 8000;
 
+app.options("*", cors());
 //MIDDLEWARE
 app.use(express.json());
 app.use(cors(corsOptions));
@@ -28,7 +30,7 @@ mongoose
   })
   .catch((err) => {
     console.log(err);
-});
+  });
 
 // routes
 const courseRoutes = require("./routes/course");
