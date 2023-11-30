@@ -5,16 +5,23 @@ const cors = require("cors");
 const app = express();
 
 const corsOptions = {
-  origin: "https://capstone-mern-front.vercel.app",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  origin: "https://capstone-mern-front.vercel.app/",
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
-  optionsSuccessStatus: 204,
 };
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "https://capstone-mern-front.vercel.app/");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
+app.options('*', cors())
 
 //PORT
 const PORT = process.env.PORT || 8000;
 
-app.options("*", cors());
 //MIDDLEWARE
 app.use(express.json());
 app.use(cors(corsOptions));
