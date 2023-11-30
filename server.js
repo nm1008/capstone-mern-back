@@ -8,6 +8,8 @@ const corsOptions = {
   origin: "https://capstone-mern-front.vercel.app/",
 };
 
+app.options('*', cors())
+
 //PORT
 const PORT = process.env.PORT || 8000;
 
@@ -26,7 +28,7 @@ mongoose
   })
   .catch((err) => {
     console.log(err);
-  });
+});
 
 // routes
 const courseRoutes = require("./routes/course");
