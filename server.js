@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 
 const corsOptions = {
-  origin: "https://deploy-mern-frontend-jet.vercel.app",
+  origin: "https://capstone-mern-front.vercel.app/",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
