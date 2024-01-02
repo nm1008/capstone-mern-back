@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 
 const corsOptions = {
-  origin: "https://capstone-mern-front.vercel.app/",
+  origin: "https://capstone-mern-front.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
@@ -13,7 +13,7 @@ const corsOptions = {
 app.use(function (req, res, next) {
   res.header(
     "Access-Control-Allow-Origin",
-    "https://capstone-mern-front.vercel.app/"
+    "https://capstone-mern-front.vercel.app"
   );
   res.header(
     "Access-Control-Allow-Headers",
@@ -26,6 +26,7 @@ app.use(cors(corsOptions));
 
 app.options("*", cors(corsOptions));
 
+// Other headers
 app.use(function (req, res, next) {
   res.header(
     "Access-Control-Allow-Headers",
@@ -34,14 +35,14 @@ app.use(function (req, res, next) {
   next();
 });
 
-//PORT
+// PORT
 const PORT = process.env.PORT || 8000;
 
-//MIDDLEWARE
+// MIDDLEWARE
 app.use(express.json());
 app.use(cors(corsOptions));
 
-//connecting to mongoDB database and listening to port (whatever that is stored in the .env or default 8000 and the server cannot connect to the server it will log the error message)
+// connecting to MongoDB database and listening to port
 mongoose
   .connect(process.env.DB)
   .then(() => {
